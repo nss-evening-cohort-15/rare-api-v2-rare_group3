@@ -146,3 +146,4 @@ cython_debug/
 
 #data stuff
 rare_v2api/migrations/
+.vscode/

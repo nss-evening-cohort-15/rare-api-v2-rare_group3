@@ -1,0 +1,23 @@
+[
+    {
+        "model": "rare_v2api.category",
+        "pk": 1,
+        "fields": {
+            "label": "News"
+        }
+        },
+        {
+            "model": "rare_v2api.category",
+            "pk": 2,
+            "fields": {
+                "label": "Entertainment"
+        }
+        },
+        {
+            "model": "rare_v2api.category",
+            "pk": 2,
+            "fields": {
+            "label": "Sports"
+        }
+    }
+]

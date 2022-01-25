@@ -39,18 +39,19 @@ class PostView(ViewSet):
     def retrieve(self, request, pk=None):
 
         try:
-            event = Post.objects.get(pk=pk)
+            post = Post.objects.get(pk=pk)
             serializer = PostSerializer(post, context={'request': request})
             return Response(serializer.data)
-        except Exception:
+        except Exception as ex:
             return HttpResponseServerError(ex)
 
     def update(self, request, pk=None):
 
         user = RareUser.objects.get(user=request.auth.user)
-        category = Category.objects.get(pk=request.data["categoryId"])
+        category = Category.objects.get(pk=request.data["category_id"])
 
         post = Post.objects.get(pk=pk)
+        post.user = user
         post.title = request.data["data"]
         post.category = category
         post.publication_date = request.data["publication_date"]
@@ -83,9 +84,9 @@ class PostView(ViewSet):
         user = RareUser.objects.get(user=request.auth.user)
 
         for post in posts:
-            post.joined = user in post.post_author.all()
+            post.joined = user in post.posts.all()
 
-        category = self.request.query_params.get('catergoryId', None)
+        category = self.request.query_params.get('catergory_id', None)
         if category is not None:
             posts = posts.filter(category__id=type)
 

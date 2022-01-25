@@ -6,7 +6,7 @@
             "follower": 1,
             "author": 2,
             "created_on": "2022-01-24T14:51:39.989Z",
-            "ended_on": ""
+            "ended_on": null
         }
         },
         {
@@ -16,7 +16,7 @@
                 "follower": 2,
                 "author": 1,
                 "created_on": "2022-01-24T14:51:39.989Z",
-                "ended_on": ""
+                "ended_on": null
         }
     }
 ]

@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "label": "thumbs up",
-      "img_url": "https://i.pinimg.com/originals/52/55/d0/5255d09ed4f8622b912661775f26bd58.png"
+      "image_url": "https://i.pinimg.com/originals/52/55/d0/5255d09ed4f8622b912661775f26bd58.png"
     }
   },
   {
@@ -12,7 +12,7 @@
     "pk": 2,
     "fields": {
       "label": "heart",
-      "img_url": "https://cdn2.iconfinder.com/data/icons/media-player-ui/512/Media-Icon-25-512.png"
+      "image_url": "https://cdn2.iconfinder.com/data/icons/media-player-ui/512/Media-Icon-25-512.png"
     }
   }
 ]

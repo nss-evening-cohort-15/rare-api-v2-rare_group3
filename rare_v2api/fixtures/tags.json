@@ -1,0 +1,9 @@
+[
+  {
+    "models": "rare_v2api.tag",
+    "pk": 1,
+    "fields": {
+      "label": "👍"
+    }
+  }
+]

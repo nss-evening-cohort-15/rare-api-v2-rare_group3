@@ -1,0 +1,13 @@
+[
+  {
+    "model": "rare_v2api.rareuser",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "bio": "Me",
+      "created_on": "2022-01-24T14:51:39.989Z",
+      "active": true,
+      "profile_image_url": "https://cdn.shopify.com/s/files/1/0876/7136/products/IMG_9985_1024x1024.jpg?v=1598149301"
+    }
+  }
+]

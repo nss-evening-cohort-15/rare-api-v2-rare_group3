@@ -9,5 +9,27 @@
       "active": true,
       "profile_image_url": "https://cdn.shopify.com/s/files/1/0876/7136/products/IMG_9985_1024x1024.jpg?v=1598149301"
     }
+  },
+  {
+    "model": "rare_v2api.rareuser",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "bio": "You",
+      "created_on": "2022-01-24T14:51:39.989Z",
+      "active": true,
+      "profile_image_url": "https://www.pinclipart.com/picdir/middle/286-2864545_lego-faces-clip-art-png-download.png"
+    }
+  },
+  {
+    "model": "rare_v2api.rareuser",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "bio": "Us",
+      "created_on": "2022-01-24T14:51:39.989Z",
+      "active": true,
+      "profile_image_url": "https://i.pinimg.com/originals/2f/dd/1d/2fdd1d81f8cafd38a6192b9edbea3fbe.jpg"
+    }
   }
 ]

@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rare_v2',
+    'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'rare_v2api'
 ]

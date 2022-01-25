@@ -6,7 +6,7 @@
             "post": 1,
             "author": 1,
             "content": "Great post!",
-            "created_on": "2022-01-05"
+            "created_on": "2020-08-28T14:51:39.989Z"
         }
         },
         {
@@ -16,7 +16,7 @@
                 "post": 2,
                 "author": 1,
                 "content": "Interesting!",
-                "created_on": "2022-01-06"
+                "created_on": "2020-08-28T14:51:39.989Z"
         }
     }
 ]

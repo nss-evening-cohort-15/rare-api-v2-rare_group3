@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rare_v2',
     'corsheaders',
+    'rare_v2api'
 ]
 
 REST_FRAMEWORK = {

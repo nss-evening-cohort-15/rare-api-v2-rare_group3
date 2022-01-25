@@ -1,8 +1,9 @@
 from django.db import models
-
+from .rareuser import RareUser
+from .post import Post
+from .reaction import Reaction
 
 class PostReaction(models.Model):
-    user = models.ForeignKey("rare_v2api.User", on_delete=models.CASCADE, related_name="users_reaction")
-    post = models.ForeignKey("rare_v2api.Post", on_delete=models.CASCADE, related_name="post_reaction")
-    reaction = models.ForeignKey("rare_v2.Reaction", on_delete=models.CASCADE)
-  
+    user = models.ForeignKey(RareUser, on_delete=models.CASCADE, related_name="post_reactions")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="post_reactions")
+    reaction = models.ForeignKey(Reaction, on_delete=models.CASCADE, related_name="post_reactions")

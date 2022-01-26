@@ -13,9 +13,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+from rest_framework import routers
+
+from rare_v2api.models.rareuser import RareUser
+from rare_v2api.views import (
+    register_user,
+    login_user,
+    get_rareuser_profile,
+)
+
+from django.conf.urls import include
 from django.urls import path
 
+router = routers.DefaultRouter(trailing_slash=False)
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('register', register_user),
+    path('login', login_user),
+    path('profile', get_rareuser_profile),
+    path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]

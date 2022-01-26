@@ -1,4 +1,4 @@
-from msilib import type_localizable
+# from msilib import type_localizable
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
@@ -105,4 +105,4 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('id', 'title', publication)
+        fields = ('id', 'title')

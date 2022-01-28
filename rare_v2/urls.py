@@ -24,13 +24,30 @@ from rare_v2api.views import (
 
 from django.conf.urls import include
 from django.urls import path
+from rest_framework import routers
+from django.conf.urls import include 
+from rare_v2api.views import ReactionView
+from rare_v2api.views import PostReactionView
+
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'reactions', ReactionView, 'reaction')
+router.register(r'postreactions', PostReactionView, 'postreactions') 
+
 
 router = routers.DefaultRouter(trailing_slash=False)
 
 urlpatterns = [
+<<<<<<< HEAD
     path('', include(router.urls)),
     path('register', register_user),
     path('login', login_user),
     path('profile', get_rareuser_profile),
+=======
+    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    # path('register', register_user),
+    # path('login', login_user),
+>>>>>>> main
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]

@@ -4,3 +4,5 @@ from .postreaction import PostReactionView
 from .reaction import ReactionView
 from .rareuser import RareUserView
 from .tag import TagView
+from .comment import CommentView
+

@@ -1,4 +1,3 @@
-# from msilib import type_localizable
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
@@ -11,20 +10,19 @@ from datetime import datetime
 from rare_v2api.models import Post, RareUser, Category
 
 
-
 class PostView(ViewSet):
 
     def create(self, request):
 
         user = RareUser.objects.get(user=request.auth.user)
-        category = Category.objects.get(pk=request.data["category"])
+        category = Category.objects.get(pk=request.data["category_id"])
         publication_date = make_aware(datetime.strptime(request.data["publication_date"], '%Y-%m-%d'))
 
         post = Post()
         post.user = user
         post.title = request.data["title"]
         post.category = category
-        post.publication_date = publication_date
+        # post.publication_date = publication_date
         post.image_url = request.data["image_url"]
         post.content = request.data["content"]
         post.approved = request.data["approved"]
@@ -32,7 +30,7 @@ class PostView(ViewSet):
         try:
             post.save()
             serializer = PostSerializer(post, context={'request': request})
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         except ValidationError as ex:
             return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -69,11 +67,9 @@ class PostView(ViewSet):
             post.delete()
 
             return Response({}, status=status.HTTP_204_NO_CONTENT)
-
         except Post.DoesNotExist as ex:
             return Response({'message': ex.args[0]},
                             status=status.HTTP_404_NOT_FOUND)
-
         except Exception as ex:
             return Response({'message': ex.args[0]},
                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -83,8 +79,8 @@ class PostView(ViewSet):
         posts = Post.objects.all()
         user = RareUser.objects.get(user=request.auth.user)
 
-        for post in posts:
-            post.joined = user in post.posts.all()
+        # for post in posts:
+        #     post.joined = user in post.posts.all()
 
         category = self.request.query_params.get('catergory_id', None)
         if category is not None:
@@ -98,11 +94,30 @@ class PostView(ViewSet):
 class PostUserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Userfields = ['first_name', 'last_name', 'email']
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+
+class PostRareUserSerializer(serializers.ModelSerializer):
+
+    user = PostUserSerializer(many=False)
+    class Meta:
+        model = RareUser
+        fields = ['user']
 
 
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('id', 'title')
+        fields = ('id', 'label')
+
+
+class PostSerializer(serializers.ModelSerializer):
+
+    user = PostRareUserSerializer(many=False)
+    category = CategorySerializer(many=False)
+
+    class Meta:
+        model = Post
+        fields = ('id', 'user', 'title', 'category', 'publication_date', 'image_url', 'content', 'approved')

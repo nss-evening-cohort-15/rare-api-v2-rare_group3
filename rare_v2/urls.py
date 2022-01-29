@@ -29,6 +29,7 @@ from rare_v2api.views import (
 )
 
 router = routers.DefaultRouter(trailing_slash=False)
+
 router.register(r'comments', CommentView, 'comments')
 router.register(r'postreactions', PostReactionView, 'postreactions')
 router.register(r'posts', PostView, 'post')

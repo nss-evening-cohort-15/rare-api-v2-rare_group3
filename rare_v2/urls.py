@@ -22,7 +22,7 @@ from rare_v2api.views import PostReactionView
 
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'reactions', ReactionView, 'reaction')
+router.register(r'reactions', ReactionView, 'reactions')
 router.register(r'postreactions', PostReactionView, 'postreactions') 
 
 

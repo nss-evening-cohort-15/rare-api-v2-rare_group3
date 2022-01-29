@@ -7,6 +7,4 @@
             "driver": "SQLite",
             "name": "rare_v2",
             "database": "db.sqlite3"
-        }
-    ]
-}
+        }]}

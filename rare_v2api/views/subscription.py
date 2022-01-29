@@ -69,6 +69,21 @@ class SubscriptionView(ViewSet):
         # client that something was wrong with its request data
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+        
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a single game
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            subscription = Subscription.objects.get(pk=pk)
+            subscription.delete()
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+        except Subscription.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 class SubscriptionSerializer(serializers.ModelSerializer):
     """JSON serializer for subscription types
 

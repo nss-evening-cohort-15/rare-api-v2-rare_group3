@@ -49,9 +49,9 @@ class CategoryView(ViewSet):
         # Create a new Python instance of the subscription class
         # and set its properties from what was sent in the
         # body of the request from the client.
-        label=Category.objects.get(label=request.data["label"])
+        
         category = Category()
-        category.label = label
+        category.label = request.data["label"]
         # Try to save the new category to the database, then
         # serialize the category instance as JSON, and send the
         # JSON as a response to the client request
@@ -63,7 +63,21 @@ class CategoryView(ViewSet):
         
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
-
+        
+        
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a single game
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            category = Category.objects.get(pk=pk)
+            category.delete()
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+        except Category.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class CategorySerializer(serializers.ModelSerializer):
     """JSON serializer for game types

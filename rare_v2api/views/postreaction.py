@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from rare_v2api.models import PostReaction
+from rare_v2api.models import PostReaction, postreaction
 from rare_v2api.models import RareUser
 from rare_v2api.models import Post
 from rare_v2api.models import Reaction
@@ -12,7 +12,6 @@ from django.core.exceptions import ValidationError
 
 class PostReactionView(ViewSet):
     """post reactions"""
-
 
     def create(self, request):
         postreaction = PostReaction()
@@ -60,6 +59,24 @@ class PostReactionView(ViewSet):
         serializer = PostReactionSerializer(
             post_reactions, many=True, context={'request': request})
         return Response(serializer.data)
+
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a single postreaction
+
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            postreaction = PostReaction.objects.get(pk=pk)
+            postreaction.delete()
+
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        except PostReaction.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
 
 class PostReactionSerializer(serializers.ModelSerializer):
     """JSON serializer for reactions

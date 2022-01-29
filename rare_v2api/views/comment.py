@@ -17,13 +17,13 @@ class CommentView(ViewSet):
 
         author = RareUser.objects.get(user=request.auth.user)
         post = Post.objects.get(pk=request.data["post"])
-        created_on = make_aware(datetime.strptime(request.data["created_on"], '%Y-%m-%d'))
+        # created_on = make_aware(datetime.strptime(request.data["created_on"], '%Y-%m-%d'))
 
         comment = Comment()
         comment.post = post
         comment.author = author
         comment.content = request.data["content"]
-        comment.created_on = created_on
+        # comment.created_on = created_on
 
         try:
             comment.save()
@@ -43,7 +43,7 @@ class CommentView(ViewSet):
 
     def update(self, request, pk=None):
 
-        post = Post.objects.get(pk=request.data["post_id"])
+        post = Post.objects.get(pk=request.data["post"])
         author = RareUser.objects.get(user=request.auth.user)
 
         comment = Comment.objects.get(pk=pk)

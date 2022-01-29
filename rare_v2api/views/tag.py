@@ -1,3 +1,4 @@
+from cProfile import label
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
@@ -40,6 +41,13 @@ class TagView(ViewSet):
       except Exception as ex:
           return HttpResponseServerError(ex)
 
+  def update(self, request, pk=None):
+    tag = Tag.objects.get(pk=pk)
+    tag.label = request.data["label"]
+    tag.save()
+    
+    return Response({}, status=status.HTTP_204_NO_CONTENT)
+    
   def list(self, request):
     
       tags = Tag.objects.all()

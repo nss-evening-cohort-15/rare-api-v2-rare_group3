@@ -15,8 +15,8 @@ class PostView(ViewSet):
     def create(self, request):
 
         user = RareUser.objects.get(user=request.auth.user)
-        category = Category.objects.get(pk=request.data["category_id"])
-        publication_date = make_aware(datetime.strptime(request.data["publication_date"], '%Y-%m-%d'))
+        category = Category.objects.get(pk=request.data["category"])
+        # publication_date = make_aware(datetime.strptime(request.data["publication_date"], '%Y-%m-%d'))
 
         post = Post()
         post.user = user
@@ -46,13 +46,13 @@ class PostView(ViewSet):
     def update(self, request, pk=None):
 
         user = RareUser.objects.get(user=request.auth.user)
-        category = Category.objects.get(pk=request.data["category_id"])
+        category = Category.objects.get(pk=request.data["category"])
 
         post = Post.objects.get(pk=pk)
         post.user = user
-        post.title = request.data["data"]
+        post.title = request.data["title"]
         post.category = category
-        post.publication_date = request.data["publication_date"]
+        # post.publication_date = request.data["publication_date"]
         post.image_url = request.data["image_url"]
         post.content = request.data["content"]
         post.approved = request.data["approved"]

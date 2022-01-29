@@ -11,7 +11,6 @@ from rare_v2api.models import RareUser
 @permission_classes([AllowAny])
 def login_user(request):
     '''Handles the authentication of a gamer
-
     Method arguments:
       request -- The full HTTP request object
     '''
@@ -39,7 +38,6 @@ def login_user(request):
 @permission_classes([AllowAny])
 def register_user(request):
     '''Handles the creation of a new gamer for authentication
-
     Method arguments:
       request -- The full HTTP request object
     '''

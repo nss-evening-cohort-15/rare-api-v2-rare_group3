@@ -5,7 +5,7 @@
         "fields": {
             "title": "Covid-19 Surge",
             "category": 1,
-            "publication_date": "2022-01-20",
+            "publication_date": "2022-01-15T20:00:42.874Z",
             "image_url": "https://news.delaware.gov/files/2020/02/coronavirus.jpg",
             "content": "More news on Covid-19",
             "approved": 1,
@@ -18,7 +18,7 @@
             "fields": {
                 "title": "Wingz & Tingz",
                 "category": 2,
-                "publication_date": "2021-03-20",
+                "publication_date": "2022-01-02T20:00:42.874Z",
                 "image_url": "https://www.theworldandthensome.com/wp-content/uploads/2021/03/Screen-Shot-2021-03-17-at-10.37.10.png",
                 "content": "YUMMMY :P",
                 "approved": 1,

@@ -37,8 +37,8 @@ router.register(r'posts', PostView, 'post')
 router.register(r'reactions', ReactionView, 'reaction')
 router.register(r'rareusers', RareUserView, 'rareusers')
 router.register(r'tags', TagView, 'tags')
-router.register(r'categories',CategoryView,'categories')
-router.register(r'subscriptions',SubscriptionView,'subscriptions')
+router.register(r'categories', CategoryView, 'categories')
+router.register(r'subscriptions', SubscriptionView, 'subscriptions')
 
 urlpatterns = [
     path('', include(router.urls)),

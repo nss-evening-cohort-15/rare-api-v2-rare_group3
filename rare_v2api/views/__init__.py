@@ -5,4 +5,6 @@ from .reaction import ReactionView
 from .rareuser import RareUserView
 from .tag import TagView
 from .comment import CommentView
+from .category import CategoryView
+from .subscription import SubscriptionView
 

@@ -9,7 +9,7 @@ from rare_v2api.models import RareUser
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def login_user(request):
+def login_user(request):  # sourcery skip: hoist-statement-from-if
     '''Handles the authentication of a gamer
     Method arguments:
       request -- The full HTTP request object

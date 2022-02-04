@@ -25,13 +25,13 @@ class ProfileView(ViewSet):
 class UserSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
-    fields = ('first_name', 'last_name' )
+    fields = ('id', 'first_name', 'last_name')
     
 class RareUserSerializer(serializers.ModelSerializer):
   user = UserSerializer(many=False)
   class Meta:
     model = RareUser
-    fields = ('profile_image_url', 'created_on', 'user')
+    fields = ('id', 'profile_image_url', 'created_on', 'user')
     
 class PostSerializer(serializers.ModelSerializer):
   class Meta:

@@ -25,7 +25,6 @@ from rare_v2api.views import (
     TagView,
     CategoryView,
     SubscriptionView,
-    ProfileView,
     register_user,
     login_user,
 )
@@ -40,7 +39,7 @@ router.register(r'rareusers', RareUserView, 'rareusers')
 router.register(r'tags', TagView, 'tags')
 router.register(r'categories', CategoryView, 'categories')
 router.register(r'subscriptions', SubscriptionView, 'subscriptions')
-router.register(r'profile', ProfileView, 'profile')
+
 
 urlpatterns = [
     path('', include(router.urls)),

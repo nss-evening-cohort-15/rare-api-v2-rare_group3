@@ -1,13 +1,15 @@
 SELECT*
-FROM rare_v2api_tag
+FROM auth_user
 
 DELETE
-FROM auth_user
-where id>3
+FROM rare_v2api_comment
+where id > 3
 
 SELECT*
-FROM rare_v2api_rareuser
+FROM rare_v2api_comment
 
 SELECT*
 FROM rare_v2api_post
 
+SELECT*
+FROM authtoken_token

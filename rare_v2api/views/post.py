@@ -103,7 +103,7 @@ class PostRareUserSerializer(serializers.ModelSerializer):
     user = PostUserSerializer(many=False)
     class Meta:
         model = RareUser
-        fields = ['user']
+        fields = ['id', 'user', 'bio']
 
 
 class CategorySerializer(serializers.ModelSerializer):

@@ -16,5 +16,23 @@
       "post": 1,
       "reaction": 1
     }
+  },
+  {
+    "model": "rare_v2api.postreaction",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "post": 1,
+      "reaction": 3
+    }
+  },
+  {
+    "model": "rare_v2api.postreaction",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "post": 1,
+      "reaction": 1
+    }
   }
 ]

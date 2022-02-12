@@ -3,16 +3,40 @@
     "model": "rare_v2api.reaction",
     "pk": 1,
     "fields": {
-      "label": "thumbs up",
-      "image_url": "https://i.pinimg.com/originals/52/55/d0/5255d09ed4f8622b912661775f26bd58.png"
+      "label": "smile",
+      "image_url": "🙂"
     }
   },
   {
     "model": "rare_v2api.reaction",
     "pk": 2,
     "fields": {
+      "label": "frown",
+      "image_url": "🙁"
+    }
+  },
+  {
+    "model": "rare_v2api.reaction",
+    "pk": 3,
+    "fields": {
       "label": "heart",
-      "image_url": "https://cdn2.iconfinder.com/data/icons/media-player-ui/512/Media-Icon-25-512.png"
+      "image_url": "❤"
+    }
+  },
+  {
+    "model": "rare_v2api.reaction",
+    "pk": 4,
+    "fields": {
+      "label": "thumbs up",
+      "image_url": "👍"
+    }
+  },
+  {
+    "model": "rare_v2api.reaction",
+    "pk": 5,
+    "fields": {
+      "label": "thumbs down",
+      "image_url": "👎"
     }
   }
 ]

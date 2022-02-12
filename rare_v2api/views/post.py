@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from django.utils.timezone import make_aware
 from datetime import datetime
-from rare_v2api.models import Post, RareUser, Category
+from rare_v2api.models import Post, RareUser, Category, Comment
 
 
 class PostView(ViewSet):
@@ -103,7 +103,7 @@ class PostRareUserSerializer(serializers.ModelSerializer):
     user = PostUserSerializer(many=False)
     class Meta:
         model = RareUser
-        fields = ['user']
+        fields = ['id', 'user', 'bio']
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -113,11 +113,20 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ('id', 'label')
 
 
+class CommentSerializer(serializers.ModelSerializer):
+
+    author = PostRareUserSerializer(many=False)
+
+    class Meta:
+        model = Comment
+        fields = ('id', 'author', 'content', 'created_on')
+
 class PostSerializer(serializers.ModelSerializer):
 
     user = PostRareUserSerializer(many=False)
     category = CategorySerializer(many=False)
+    comments = CommentSerializer(many=True)
 
     class Meta:
         model = Post
-        fields = ('id', 'user', 'title', 'category', 'publication_date', 'image_url', 'content', 'approved')
+        fields = ('id', 'user', 'title', 'category', 'publication_date', 'image_url', 'content', 'approved', 'comments')

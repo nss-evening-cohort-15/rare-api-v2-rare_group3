@@ -40,6 +40,7 @@ router.register(r'tags', TagView, 'tags')
 router.register(r'categories', CategoryView, 'categories')
 router.register(r'subscriptions', SubscriptionView, 'subscriptions')
 
+
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),

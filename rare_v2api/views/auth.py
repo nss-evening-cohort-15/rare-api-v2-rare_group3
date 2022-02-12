@@ -9,7 +9,7 @@ from rare_v2api.models import RareUser
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def login_user(request):
+def login_user(request):  # sourcery skip: hoist-statement-from-if
     '''Handles the authentication of a gamer
     Method arguments:
       request -- The full HTTP request object
@@ -26,7 +26,8 @@ def login_user(request):
         token = Token.objects.get(user=authenticated_user)
         data = {
             'valid': True,
-            'token': token.key
+            'token': token.key,
+            'rareuser_pk': authenticated_user.rare_user.id
         }
         return Response(data)
     else:
@@ -54,12 +55,11 @@ def register_user(request):
 
     # Now save the extra info in the levelupapi_gamer table
     rareuser = RareUser.objects.create(
-        bio=request.data['bio'],
         user=new_user
     )
 
     # Use the REST Framework's token generator on the new user account
     token = Token.objects.create(user=rareuser.user)
     # Return the token to the client
-    data = { 'token': token.key }
+    data = { 'token': token.key, 'valid': True, 'rareuser_pk': rareuser.id }
     return Response(data)
